@@ -1,12 +1,53 @@
-# React + Vite
+### Hexlet tests and linter status:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Actions Status](https://github.com/deniskolomoyets/qa-auto-engineer-javascript-project-89/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/deniskolomoyets/qa-auto-engineer-javascript-project-89/actions/workflows/hexlet-check.yml)
 
-Currently, two official plugins are available:
+# Chatbot Automated Testing Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project contains tests for a chatbot written using **Vitest** and **React Testing Library**. The tests cover both React components and the chatbot logic.
 
-## Expanding the ESLint configuration
+## Table of Contents
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [Description](#Description)
+- [Installation](#Installation)
+- [Running Tests](#Running-Tests)
+- [Technologies](#Technologies)
+
+## Description
+
+This project includes tests for a chatbot implemented using **React**. It utilizes **Vitest** for JavaScript testing and **React Testing Library** for testing React components. The goal is to ensure the proper functionality of the application by testing its UI, the interaction with the chatbot, message handling, and other key features.
+
+## Installation
+
+To run the tests locally, follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone git@github.com:deniskolomoyets/qa-auto-engineer-javascript-project-89.git
+cd qa-auto-engineer-javascript-project-89
+```
+
+2. Install dependencies using npm:
+
+```bash
+npm ci
+```
+
+## Running Tests
+
+To run the tests, use the following command:
+
+```bash
+npm test
+```
+
+### Test Files
+
+- **app.spec.jsx**: Tests for React components.
+- **chatBot.spec.jsx**: Tests for the chatbot logic.
+
+## Technologies
+
+- **Vitest** — The testing framework used to run the tests.
+- **React Testing Library** — The library used to test React components.
