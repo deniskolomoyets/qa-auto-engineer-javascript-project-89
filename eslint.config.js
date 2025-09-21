@@ -3,7 +3,7 @@ import js from '@eslint/js';
 import globals from 'globals';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
-
+import stylistic from '@stylistic/eslint-plugin'; 
 export default [
   // 1. Игнорируем папку сборки
   { ignores: ['dist'] },
@@ -26,6 +26,7 @@ export default [
     plugins: {
       react,
       'react-hooks': reactHooks,
+      stylistic,
     },
     rules: {
       // Базовые правила
@@ -35,14 +36,14 @@ export default [
       ...reactHooks.configs.recommended.rules,
 
       // Основные правила стиля, которые требуют в Hexlet:
-      'semi': ['error', 'always'],          // Требуем точку с запятой
-      'quotes': ['error', 'single'],        // Требуем одинарные кавычки
-      'indent': ['error', 2],               // Отступы в 2 пробела
-      'eol-last': ['error', 'always'],      // Пустая строка в конце файла
-      'react/prop-types': 'off',            // Отключаем проверку PropTypes
+      'stylistic/semi': ['error', 'always'],          // Было 'semi'
+      'stylistic/quotes': ['error', 'single'],        // Было 'quotes'
+      'stylistic/indent': ['error', 2],               // Было 'indent'
+      'stylistic/eol-last': ['error', 'always'],      // Было 'eol-last'
       
       // Глобальные переменные тестов (для __tests__):
       'no-undef': 'off', 
+      'react/prop-types': 'off',      
     },
   },
 ];
