@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { screen, waitFor } from '@testing-library/react';
 import { expect } from 'vitest';
-import { validSteps } from '../../__fixtures__/steps';
+import { validSteps } from '../../src/steps.js';
 import '@testing-library/jest-dom';
 import getBtn from './utils/getBtn';
 

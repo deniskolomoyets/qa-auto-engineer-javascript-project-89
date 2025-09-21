@@ -1,9 +1,9 @@
 import { beforeEach, describe, test, vi, expect } from 'vitest';
 import ChatBotPage from './pages/chatBotPage';
 import Widget from '@hexlet/chatbot-v2';
-import { validSteps } from '../__fixtures__/steps';
-import { emptyMessages } from '../__fixtures__/emptyMessages';
-import { emptyButtons } from '../__fixtures__/emptyButtons';
+import { validSteps } from "../src/steps.js";
+import { emptyMessages } from "../src/emptyMessages.js";
+import { emptyButtons } from "../src/emptyButtons.js";
 import { render, waitFor } from '@testing-library/react';
 
 describe('Chat Bot tests', () => {
