@@ -1,6 +1,5 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import '@hexlet/chatbot-v2/styles';
+import App from './App';
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+const container = document.getElementById('root');
+ReactDOM.createRoot(container).render(<App />);
