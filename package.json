@@ -11,17 +11,17 @@
     "test": "npx vitest run"
   },
   "dependencies": {
-    "@hexlet/chatbot-v2": "^0.2.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "@eslint/js": "^9.13.0",
-    "globals": "^15.11.0",
+    "@hexlet/chatbot-v2": "^0.2.4",
+    "@testing-library/jest-dom": "^6.6.2",
+    "@vitejs/plugin-react": "^4.3.3",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.13",
-    "@vitejs/plugin-react": "^4.3.3",
-    "vite": "^5.4.9",
-    "@testing-library/jest-dom": "^6.6.2"
+    "globals": "^15.11.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "vite": "^5.4.9"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
