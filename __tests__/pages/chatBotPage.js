@@ -122,6 +122,46 @@ class ChatBotPage {
       expect(this.scroll).toHaveBeenCalled();
     });
   }
+
+  /**
+   * Complete chatbot workflow: open chat, start conversation, and verify first step
+   */
+  async completeInitialSetup() {
+    await this.openChat();
+    await this.checkConversationStartBtnVisible();
+    const startBtn = await screen.getByRole('button', { name: this.steps[0].buttons[0].text });
+    await this.user.click(startBtn);
+    await this.checkStartBlockRendered();
+  }
+
+  /**
+   * Navigate to a specific step by clicking a button
+   * @param {string} buttonKey - Key from this.buttons object
+   */
+  async navigateToStep(buttonKey) {
+    const button = await this.getBtn(this.buttons[buttonKey]);
+    await this.user.click(button);
+  }
+
+  /**
+   * Test modal open/close cycle
+   */
+  async testModalOpenClose() {
+    await this.checkChatBotRender();
+    await this.openChat();
+    await this.checkConversationStartBtnVisible();
+    await this.closeChat();
+    await this.checkChatBotRender();
+  }
+
+  /**
+   * Test conversation flow from start to second step
+   */
+  async testConversationFlow() {
+    await this.completeInitialSetup();
+    await this.navigateToStep('changeProfessionBtn');
+    await this.checkSwitchBlockRendered();
+  }
 }
 
 export default ChatBotPage;
