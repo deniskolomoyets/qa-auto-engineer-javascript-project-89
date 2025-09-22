@@ -1,22 +1,17 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
   test: {
-    environment: 'jsdom',
-    css: true,
+    watch: false,
     globals: true,
-    setupFiles: ['vitest.setup.js'],
     server: {
       deps: {
-        inline: [/@hexlet\/.*/],
+        inline: ['@hexlet/chatbot-v2'],
       },
     },
-    deps: {
-      web: {
-        transformCss: true,
-      },
-    },
+    environment: 'jsdom',
   },
-});
+  plugins: [react()],
+})
