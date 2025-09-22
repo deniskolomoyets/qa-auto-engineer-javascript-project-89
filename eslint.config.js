@@ -1,49 +1,38 @@
-// eslint.config.js
 import js from '@eslint/js';
 import globals from 'globals';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
-import stylistic from '@stylistic/eslint-plugin'; 
-export default [
-  // 1. Игнорируем папку сборки
-  { ignores: ['dist'] },
+import reactRefresh from 'eslint-plugin-react-refresh';
 
-  // 2. Базовая конфигурация для JS/JSX
+export default [
+  { ignores: ['dist'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser, // Добавляем браузерные globals
+      globals: globals.browser,
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
         sourceType: 'module',
       },
     },
-    settings: {
-      react: { version: '18.3' }
-    },
+    settings: { react: { version: '18.3' } },
     plugins: {
       react,
       'react-hooks': reactHooks,
-      stylistic,
+      'react-refresh': reactRefresh,
     },
     rules: {
-      // Базовые правила
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
-
-      // Основные правила стиля, которые требуют в Hexlet:
-      'stylistic/semi': ['error', 'always'],          // Было 'semi'
-      'stylistic/quotes': ['error', 'single'],        // Было 'quotes'
-      'stylistic/indent': ['error', 2],               // Было 'indent'
-      'stylistic/eol-last': ['error', 'always'],      // Было 'eol-last'
-      
-      // Глобальные переменные тестов (для __tests__):
-      'no-undef': 'off', 
-      'react/prop-types': 'off',      
+      'react/jsx-no-target-blank': 'off',
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
     },
   },
 ];
