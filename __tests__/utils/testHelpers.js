@@ -1,5 +1,3 @@
-import { screen } from '@testing-library/react';
-
 /**
  * Common test setup and helper functions
  */
@@ -18,9 +16,7 @@ export class TestHelpers {
    * @param {ChatBotPage} chatBotPage - The chatbot page object
    */
   static async startChatbotConversation(chatBotPage) {
-    const startBtn = await screen.getByRole('button', { 
-      name: chatBotPage.steps[0].buttons[0].text 
-    });
+    const startBtn = await chatBotPage.getBtn(chatBotPage.buttons.conversationStartBtn);
     await chatBotPage.user.click(startBtn);
   }
 
