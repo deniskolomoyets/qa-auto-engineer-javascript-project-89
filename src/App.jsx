@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Widget from "@hexlet/chatbot-v2";
-import steps from "@hexlet/chatbot-v2/example-steps";
+import { validSteps } from "../__fixtures__/steps.js";
 
 const App = () => {
   const [form, setForm] = useState({
@@ -161,10 +161,10 @@ const App = () => {
   );
 
   return (
-    <>
-      {submittingState === "fillingForm" ? renderForm() : renderResult()}
-      {Widget(steps)}
-    </>
+        <>
+          {submittingState === "fillingForm" ? renderForm() : renderResult()}
+          {Widget(validSteps)}
+        </>
   );
 };
 
