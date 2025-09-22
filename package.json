@@ -3,38 +3,39 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": "20.18.1"
+  },
   "scripts": {
-    "dev": "vite",
+   "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "npx eslint .",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "npx vitest run"
   },
   "dependencies": {
-    "@hexlet/chatbot-v2": "0.2.4",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "@eslint/js": "9.13.0",
-    "globals": "15.11.0",
-    "eslint-plugin-react": "7.37.1",
-    "eslint-plugin-react-hooks": "5.0.0",
-    "eslint-plugin-react-refresh": "0.4.13",
-    "@vitejs/plugin-react": "4.3.3",
-    "vite": "5.4.9",
-    "@testing-library/jest-dom": "6.6.2"
+    "@hexlet/chatbot-v2": "^0.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@babel/core": "7.26.0",
-    "@babel/preset-env": "7.26.0",
-    "@babel/preset-react": "7.25.9",
-    "@testing-library/dom": "10.4.0",
-    "@testing-library/react": "14.3.1",
-    "@testing-library/user-event": "14.5.2",
-    "@types/react": "18.3.11",
-    "@types/react-dom": "18.3.1",
-    "eslint": "9.13.0",
-    "jsdom": "25.0.1",
-    "vitest": "2.1.9",
-    "vitest-preview": "0.0.1"
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-react": "^7.24.7",
+    "@eslint/js": "^9.9.0",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.9.0",
+    "eslint-plugin-jest-dom": "^5.4.0",
+    "eslint-plugin-react": "^7.35.0",
+    "globals": "^15.10.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "vite": "^5.4.1",
+    "vitest": "^3.2.4",
+    "vitest-preview": "^0.0.1"
   }
 }
