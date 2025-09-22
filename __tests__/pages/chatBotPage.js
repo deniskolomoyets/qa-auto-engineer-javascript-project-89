@@ -12,7 +12,7 @@ class ChatBotPage {
     this.getBtn = getBtn;
     this.scroll = window.HTMLElement.prototype.scrollIntoView;
     this.buttons = {
-      openChatBtn: { name: this.steps[0].buttons[1].text },
+      openChatBtn: { name: 'Открыть Чат' },
       closeBtn: { name: 'Close' },
       conversationStartBtn: { name: this.steps[0].buttons[0].text },
       changeProfessionBtn: { name: this.steps[1].buttons[0].text },

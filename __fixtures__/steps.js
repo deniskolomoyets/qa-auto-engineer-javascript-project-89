@@ -10,9 +10,6 @@ export const validSteps = [
         nextStepId: "start",
         type: "button",
       },
-      {
-        text: "Открыть Чат",
-      },
     ],
   },
   {
