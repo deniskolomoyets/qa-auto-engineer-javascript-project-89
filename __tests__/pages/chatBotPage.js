@@ -52,7 +52,7 @@ class ChatBotPage {
   }
 
   async checkConversationStartBtnVisible() {
-    const button = await screen.getByRole('button', { name: 'Start conversation' });
+    const button = await screen.getByRole('button', { name: this.steps[0].buttons[0].text });
     expect(button).toBeVisible();
   }
 
