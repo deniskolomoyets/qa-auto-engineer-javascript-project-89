@@ -1,14 +1,14 @@
 import userEvent from '@testing-library/user-event';
 import { screen, waitFor } from '@testing-library/react';
 import { expect } from 'vitest';
-import steps from '@hexlet/chatbot-v2/example-steps';
+import { validSteps } from '../../__fixtures__/steps';
 import '@testing-library/jest-dom';
 import getBtn from './utils/getBtn';
 
 class ChatBotPage {
   constructor() {
     this.user = userEvent.setup();
-    this.steps = steps;
+    this.steps = validSteps;
     this.getBtn = getBtn;
     this.scroll = window.HTMLElement.prototype.scrollIntoView;
     this.buttons = {
@@ -18,9 +18,9 @@ class ChatBotPage {
       changeProfessionBtn: { name: this.steps[1].buttons[0].text },
       tryInITBtn: { name: this.steps[1].buttons[1].text },
       advancedInITBtn: { name: this.steps[1].buttons[2].text },
-      tellMoreBtn: { name: this.steps[3].buttons[0].text },
-      simplerBtn: { name: this.steps[3].buttons[1].text },
-      backBtn: { name: this.steps[3].buttons[2].text },
+      tellMoreBtn: { name: this.steps[2].buttons[0].text },
+      simplerBtn: { name: this.steps[2].buttons[1].text },
+      backBtn: { name: this.steps[2].buttons[2].text },
       tryAgainBtn: { name: this.steps[5].buttons[1].text },
       signToCourseBtn: { name: this.steps[4].buttons[0].text },
     };
@@ -71,7 +71,7 @@ class ChatBotPage {
     expect(await this.getBtn(this.buttons.tellMoreBtn)).toBeVisible();
     expect(await this.getBtn(this.buttons.simplerBtn)).toBeVisible();
     expect(await this.getBtn(this.buttons.backBtn)).toBeVisible();
-    expect(screen.getByText(this.steps[3].messages[0])).toBeVisible();
+    expect(screen.getByText(this.steps[2].messages[0])).toBeVisible();
   }
 
   async checkDetailsBlockRendered() {
