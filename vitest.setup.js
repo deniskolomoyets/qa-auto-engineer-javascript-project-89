@@ -1,5 +1,6 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 import '@testing-library/jest-dom/vitest';
-import { createElement } from 'react';
+import React from 'react';
 
-// Mock React runtime for chatbot
-global.React = { createElement };
+// Mock React runtime for chatbot compatibility
+global.React = React;
