@@ -8,12 +8,8 @@ export default defineConfig({
     globals: true,
     include: ['__tests__/**/*.spec.{js,jsx,ts,tsx}'],
     setupFiles: ['vitest.setup.js'],
-    server: {
-      deps: {
-        inline: [/@hexlet\/.*/],
-      },
-    },
     deps: {
+      inline: [/@hexlet\/.*/],
       web: {
         transformCss: true,
       },
