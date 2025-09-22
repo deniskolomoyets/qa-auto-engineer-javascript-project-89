@@ -3,13 +3,11 @@ import { describe, test, vi, beforeEach } from 'vitest';
 import App from '../src/App.jsx';
 import ChatBotPage from './pages/chatBotPage';
 import AppPage from './pages/appPage';
-import { TestHelpers } from './utils/testHelpers';
 import data from '../__fixtures__/regData.js';
 
-describe('App Integration Tests', () => {
+describe('App tests', () => {
   let chatBotPage;
   let appPage;
-  
   beforeEach(() => {
     render(<App />);
     chatBotPage = new ChatBotPage();
@@ -17,41 +15,66 @@ describe('App Integration Tests', () => {
     window.HTMLElement.prototype.scrollIntoView = vi.fn();
   });
 
-  describe('Application Rendering', () => {
-    test('should render app with debug output', async () => {
-      screen.debug();
-      await appPage.checkAppRender();
-    });
+  test('render app', async () => {
+    // Debug output for component markup
+    screen.debug();
+    await appPage.checkAppRender();
   });
 
-  describe('Chatbot Integration', () => {
-    test('should display chatbot widget', async () => {
-      await chatBotPage.checkChatBotRender();
-      await TestHelpers.setupChatbot(chatBotPage);
-    });
-
-    test('should handle modal open/close interaction', async () => {
-      await chatBotPage.testModalOpenClose();
-    });
-
-    test('should navigate between conversation steps', async () => {
-      await chatBotPage.testConversationFlow();
-    });
-
-    test('should scroll to new messages', async () => {
-      await TestHelpers.setupAndStartChatbot(chatBotPage);
-      await chatBotPage.verifyScrollIntoView();
-    });
+  test('shows chatbot in the app', async () => {
+    await chatBotPage.checkChatBotRender();
+    await chatBotPage.openChat();
+    await chatBotPage.checkConversationStartBtnVisible();
   });
 
-  describe('Registration Form Integration', () => {
-    test('should handle user registration flow', async () => {
-      await waitFor(async () => {
-        await appPage.registerUser(data);
-      });
-      await appPage.checkTableIsVisible();
-      await appPage.checkTablecontent(data);
-      await appPage.checkBackBtnIsVisible();
+  test('registration result in the app', async () => {
+    await waitFor(async () => {
+      await appPage.registerUser(data);
     });
+    await appPage.checkTableIsVisible();
+    await appPage.checkTablecontent(data);
+    await appPage.checkBackBtnIsVisible();
+  });
+
+  test('chatbot modal open/close interaction', async () => {
+    // Test opening chat modal
+    await chatBotPage.checkChatBotRender();
+    await chatBotPage.openChat();
+    await chatBotPage.checkConversationStartBtnVisible();
+    
+    // Test closing chat modal
+    await chatBotPage.closeChat();
+    await chatBotPage.checkChatBotRender();
+  });
+
+  test('chatbot step transitions', async () => {
+    await chatBotPage.openChat();
+    
+    // Start conversation
+    await chatBotPage.checkConversationStartBtnVisible();
+    const startBtn = await screen.getByRole('button', { name: chatBotPage.steps[0].buttons[0].text });
+    await chatBotPage.user.click(startBtn);
+    
+    // Check first step is rendered
+    await chatBotPage.checkStartBlockRendered();
+    
+    // Click on profession change button
+    const changeProfessionBtn = await chatBotPage.getBtn(chatBotPage.buttons.changeProfessionBtn);
+    await chatBotPage.user.click(changeProfessionBtn);
+    
+    // Check second step is rendered
+    await chatBotPage.checkSwitchBlockRendered();
+  });
+
+  test('chatbot scroll behavior', async () => {
+    await chatBotPage.openChat();
+    await chatBotPage.checkConversationStartBtnVisible();
+    
+    // Start conversation to trigger scroll
+    const startBtn = await screen.getByRole('button', { name: chatBotPage.steps[0].buttons[0].text });
+    await chatBotPage.user.click(startBtn);
+    
+    // Verify scroll was called
+    await chatBotPage.verifyScrollIntoView();
   });
 });
