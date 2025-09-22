@@ -5,19 +5,20 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  define: {
-    'process.env.NODE_ENV': '"test"',
-  },
   test: {
     environment: 'jsdom',
-    globals: true,
-    setupFiles: ['./vitest.setup.js'],
     css: true,
-    coverage: {
-      provider: 'v8',
-      reporter: ['text', 'lcov'],
-      reportsDirectory: './coverage',
+    globals: true,
+    setupFiles: ['vitest.setup.js'],
+    server: {
+      deps: {
+        inline: [/@hexlet\/.*/],
+      },
     },
-    pool: 'vmForks',
+    deps: {
+      web: {
+        transformCss: true,
+      },
+    },
   },
 });
