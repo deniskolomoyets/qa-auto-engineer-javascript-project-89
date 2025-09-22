@@ -10,6 +10,11 @@ export default defineConfig({
     setupFiles: ['vitest.setup.js'],
     deps: {
       inline: [/@hexlet\/.*/],
+      optimizer: {
+        web: {
+          include: ['@hexlet/chatbot-v2'],
+        },
+      },
       web: {
         transformCss: true,
       },
