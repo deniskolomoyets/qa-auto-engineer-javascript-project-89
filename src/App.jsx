@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import Widget from '@hexlet/chatbot-v2';
-import steps from '@hexlet/chatbot-v2/example-steps';
+import { useState } from "react";
+import Widget from "@hexlet/chatbot-v2";
+import steps from "../__fixtures__/expectedSteps.js";
+import "@hexlet/chatbot-v2/styles";
 
 const App = () => {
   const [form, setForm] = useState({
