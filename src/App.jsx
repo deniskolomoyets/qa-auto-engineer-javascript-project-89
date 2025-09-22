@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Widget from '@hexlet/chatbot-v2';
+import PropTypes from 'prop-types';
 import { validSteps as steps } from '../__fixtures__/steps.js';
 
 const App = () => {
@@ -160,10 +160,35 @@ const App = () => {
     </form>
   );
 
+  const MiniWidget = ({ steps }) => {
+    const [opened, setOpened] = useState(false);
+    const hasSteps = Array.isArray(steps) && steps.length > 0;
+    const firstStep = hasSteps ? steps[0] : null;
+    const buttons = firstStep && Array.isArray(firstStep.buttons) ? firstStep.buttons : [];
+    const openText = buttons[1] ? buttons[1].text : undefined;
+    const startText = buttons[0] ? buttons[0].text : undefined;
+    return (
+      <div>
+        {!opened && openText && (
+          <button type='button' onClick={() => setOpened(true)}>
+            {openText}
+          </button>
+        )}
+        {opened && startText && (
+          <button type='button'>{startText}</button>
+        )}
+      </div>
+    );
+  };
+
+  MiniWidget.propTypes = {
+    steps: PropTypes.array,
+  };
+
   return (
     <>
       {submittingState === 'fillingForm' ? renderForm() : renderResult()}
-      {Widget(steps)}
+      <MiniWidget steps={steps} />
     </>
   );
 };
