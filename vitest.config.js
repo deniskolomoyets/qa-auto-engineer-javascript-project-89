@@ -2,6 +2,12 @@ import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
+  resolve: {
+    preserveSymlinks: true,
+  },
+  ssr: {
+    noExternal: ['@hexlet/chatbot-v2', '@hexlet/chatbot-v2/example-steps'],
+  },
   test: {
     environment: 'jsdom',
     css: true,
