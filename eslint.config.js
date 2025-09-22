@@ -1,42 +1,35 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-import js from '@eslint/js';
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-import react from 'eslint-plugin-react';
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-import globals from 'globals';
+import js from '@eslint/js'
+import globals from 'globals'
+import stylistic from '@stylistic/eslint-plugin'
+import pluginReact from 'eslint-plugin-react'
+import { defineConfig } from 'eslint/config'
+import { includeIgnoreFile } from '@eslint/compat'
+import { fileURLToPath } from 'url'
+import vitest from '@vitest/eslint-plugin'
 
-export default [
+const gitIgnorePath = fileURLToPath(new URL('.gitignore', import.meta.url))
+
+export default defineConfig([
+  includeIgnoreFile(gitIgnorePath),
+  stylistic.configs.recommended,
+  { files: ['**/*.{js,mjs,cjs,jsx}'], plugins: { js }, extends: ['js/recommended'] },
+  { files: ['**/*.{js,mjs,cjs,jsx}'], languageOptions: { globals: globals.browser } },
+  pluginReact.configs.flat.recommended,
   {
-    ignores: [
-      'dist',
-      'vite.config.js',
-      'eslint.config.js',
-      'vitest.setup.js',
-      'coverage',
-    ],
+    rules: {
+      'react/prop-types': [0],
+      'react/react-in-jsx-scope': 0,
+      'react/jsx-uses-react': 0,
+    },
   },
   {
-    files: ['**/*.{js,jsx}'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: {
-        ...globals.browser,
-      },
-      parserOptions: {
-        ecmaVersion: 'latest',
-        ecmaFeatures: { jsx: true },
-        sourceType: 'module',
-      },
-    },
-    settings: { react: { version: '18.3' } },
+    files: ['tests/**'], // or any other pattern
     plugins: {
-      react,
+      vitest,
     },
     rules: {
-      ...js.configs.recommended.rules,
-      ...react.configs.recommended.rules,
-      'react/jsx-no-target-blank': 'off',
-      'react/react-in-jsx-scope': 'off',
+      ...vitest.configs.recommended.rules, // you can also use vitest.configs.all.rules to enable all rules
+      'vitest/max-nested-describe': ['error', { max: 3 }], // you can also modify rules' behavior using option like this
     },
   },
-];
+])

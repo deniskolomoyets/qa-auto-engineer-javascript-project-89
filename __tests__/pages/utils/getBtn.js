@@ -1,7 +1,7 @@
-import { screen } from '@testing-library/react';
+import { screen } from '@testing-library/react'
 
 async function getBtn(button) {
-  return screen.getByRole('button', { name: button.name });
+  return screen.getByRole('button', { name: button.name })
 }
 
-export default getBtn;
+export default getBtn

@@ -6,8 +6,8 @@ function convertKeyToLabel(key) {
     city: 'Город',
     country: 'Страна',
     rulesCheckBox: 'Принять правила',
-  };
-  return labels[key];
+  }
+  return labels[key]
 }
 
-export default convertKeyToLabel;
+export default convertKeyToLabel

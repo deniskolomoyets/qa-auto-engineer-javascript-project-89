@@ -1,7 +1,7 @@
-import { screen } from '@testing-library/react';
+import { screen } from '@testing-library/react'
 
 async function getRegistrationTable() {
-  return screen.findByRole('table');
+  return screen.findByRole('table')
 }
 
-export default getRegistrationTable;
+export default getRegistrationTable

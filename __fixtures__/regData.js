@@ -5,6 +5,6 @@ const data = {
   country: 'Китай',
   email: 'test@example.com',
   password: 'password',
-};
+}
 
-export default data;
+export default data
